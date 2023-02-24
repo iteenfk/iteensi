@@ -24,7 +24,7 @@ p{
 button{
     all: unset;
     width: 100%;
-    background: blue;
+    background: red;
     border-radius: 8px;
     color: white;
     text-align: center;
@@ -52,4 +52,8 @@ fieldset{
 
 legend{
     padding:  0 8px;
+}
+
+h1{
+    text-align: center;
 }
