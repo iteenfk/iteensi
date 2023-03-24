@@ -4,31 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>passwerd generator</title>
+    <title>計算機アプリ</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>passward generator</h1>
-    <main>
-        <p id="result">aaa111rrr</p>
-        <button id="btn">passwerd generate</button>
-        <fieldset>
-            <legend>option</legend>
-            <label>
-                length(<span id="passwerd-length">8</span>)
-
-                <input type="range" id="slider" min="8" max="24" value="8">
-            </label>
-            <label>
-                number
-                <input type="checkbox" id="numbers-checkbox">
-            </label>
-            <label>
-                symbol
-                <input type="checkbox" id="symbols-chekbox">
-            </label>
-        </fieldset>
-    </main>
-    <script src="js/main.js"></script>
+    <h1>電卓</h1>
+    <div class="cal">
+       x:<input type="text" id="x" placeholder="0">
+       <br>
+       y:<input type="text" id="y" placeholder="0">
+       <br>
+    <button onclick="add()">+</button>
+       <button onclick="sub()">-</button>
+       <button onclick="mul()">x</button>
+       <button onclick="div()">÷</button>
+       <button onclick="cl()">C</button>
+       <button onclick="quo()">商</button>
+       <button onclick="rem()">余り</button>
+       <button onclick="squ()">平方根</button>
+       <br>
+       <input type="text" id="z" placeholder="0" readonly>
+    <div>
+        <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,38 +1,48 @@
 "use strict"
 
-const slider = document.getElementById("slider");
-const btn = document.getElementById("btn");
-
-slider.addEventListener("imput",() =>{
-    const passwardLength = document.getElementById("passward-length");
-
-    passwardLength.textContent = slider.value;
-})
-
-btn.addEventListener("click", () =>{
-
-    const result = document.getElementById("result");
-    const numbersCheckbox =document.getElementById("numbers-checkbox");
-    const symbolsCheckbox = document.getElementById("symbols-chekbox");
-
-    const letters ="abcdefghijklmnopqrstuvwxyz";
-    const numbers ="123456789"
-    const symbols ="#$%&()!{}*+|~[]";
-
-    let passward ="";
-    let seed = letters + letters.toUpperCase();
-
-    if (numbersCheckbox.checked === true){
-        seed += numbers;
-    }
-
-    if (symbolsCheckbox.checked === true){
-        seed += symbols;
-    }
-
-    for (let i = 0; i < slider.value; i++){
-        passward += seed[Math.floor(Math.random() * seed.length)];
-    }
-
-    result.textContent = passward;
-})
+function add() {
+    const x = parseFloat(document.getElementById("x").value);
+    const y = parseFloat(document.getElementById("y").value);
+    const z = x + y;
+    document.getElementById("z").value = z;
+}
+function sub() {
+    const x = parseFloat(document.getElementById("x").value);
+    const y = parseFloat(document.getElementById("y").value);
+    const z = x - y;
+    document.getElementById("z").value = z;
+}
+function mul() {
+    const x = parseFloat(document.getElementById("x").value);
+    const y = parseFloat(document.getElementById("y").value);
+    const z = x * y;
+    document.getElementById("z").value = z;
+}
+function div() {
+    const x = parseFloat(document.getElementById("x").value);
+    const y = parseFloat(document.getElementById("y").value);
+    const z = x / y;
+    document.getElementById("z").value = z;
+}
+function cl() {
+    document.getElementById("x").value = 0;
+    document.getElementById("y").value = 0;
+    document.getElementById("z").value = 0;
+}
+function rem() {
+    const x = parseFloat(document.getElementById("x").value);
+    const y = parseFloat(document.getElementById("y").value);
+    const z = x % y;
+    document.getElementById("z").value = z;
+}
+function quo() {
+    const x = parseFloat(document.getElementById("x").value);
+    const y = parseFloat(document.getElementById("y").value);
+    const z = Math.floor(x/y);
+    document.getElementById("z").value = z;
+}
+function squ() {
+    const x = parseFloat(document.getElementById("x").value);
+    const z = Math.sqrt(x);
+    document.getElementById("z").value = z;
+}
