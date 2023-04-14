@@ -22,7 +22,7 @@ function displayCalendar() {
                 calendarHTML += "<td>" + date.getDate() + "</td>";
                 date.setDate(date.getDate() + 1);
             } else {
-                calenderHTML += "<td></td>"
+                calendarHTML += "<td></td>"
             }
         }
         calendarHTML += "</tr>";
