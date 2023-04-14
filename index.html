@@ -4,27 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>計算機アプリ</title>
+    <title>カレンダーアプリ</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>電卓</h1>
-    <div class="cal">
-       x:<input type="text" id="x" placeholder="0">
-       <br>
-       y:<input type="text" id="y" placeholder="0">
-       <br>
-    <button onclick="add()">+</button>
-       <button onclick="sub()">-</button>
-       <button onclick="mul()">x</button>
-       <button onclick="div()">÷</button>
-       <button onclick="cl()">C</button>
-       <button onclick="quo()">商</button>
-       <button onclick="rem()">余り</button>
-       <button onclick="squ()">平方根</button>
-       <br>
-       <input type="text" id="z" placeholder="0" readonly>
-    <div>
-        <script src="js/main.js"></script>
+    <header>
+        <h1>iTeen Calendar</h1>
+    </header>
+    <main>
+        <p>表示したい月を選択してください</p>
+        <select id="monthSelect">
+        <option value="0">1月</option>
+        <option value="1">2月</option>
+        <option value="2">3月</option>
+        <option value="3">4月</option>
+        <option value="4">5月</option>
+        <option value="5">6月</option>
+        <option value="6">7月</option>
+        <option value="7">8月</option>
+        <option value="8">9月</option>
+        <option value="9">10月</option>
+        <option value="10">11月</option>
+        <option value="11">12月</option>
+        </select>
+        <button onclick="displayCalendar()">表示</button>
+
+        <div id="calendar">
+
+
+        </div>
+        
+
+    </main>
+
+
+    <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,33 +1,32 @@
-*{
-    padding:0;
-    margin: 0;
-}
-
 h1{
-    background-color: aqua;
-    width: 80px;
-    font-size: 10px;
-    display: block;
-    margin: 5px auto;
+    font-size: 15px;
+    background-color: black;
+    width: 280px;
+    height: 40px;
+    margin: 10px auto;
     text-align: center;
-    border: 1px solid yellow;
-    border-radius: 5px;
-    padding: 5px;
+    line-height: 40px;
+    border: 1px solid white;
+    border-radius: 10px;
+    color: white;
 }
 
-input{
-    width: 60px;
-    text-align: right;
-}
-
-.cal{
-    background-color: aqua;
-    width:80px;
-    height: 200px;
-    display: block;
+main{
+    text-align: center;
+    background-color: black;
+    width: 280px;
     margin: 0 auto;
-    border: 1px solid yellow;
-    border-radius: 5px;
-    padding: 5px;
-    text-align: center;
+    border: 1px solid white;
+    border-radius: 10px;
+    color: white;
+}
+
+button{
+    background-color: black;
+    color: white;
+}
+
+#calendar{
+    margin: 30px auto;
+    width: 62%;
 }

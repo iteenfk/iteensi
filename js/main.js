@@ -1,48 +1,36 @@
 "use strict"
 
-function add() {
-    const x = parseFloat(document.getElementById("x").value);
-    const y = parseFloat(document.getElementById("y").value);
-    const z = x + y;
-    document.getElementById("z").value = z;
-}
-function sub() {
-    const x = parseFloat(document.getElementById("x").value);
-    const y = parseFloat(document.getElementById("y").value);
-    const z = x - y;
-    document.getElementById("z").value = z;
-}
-function mul() {
-    const x = parseFloat(document.getElementById("x").value);
-    const y = parseFloat(document.getElementById("y").value);
-    const z = x * y;
-    document.getElementById("z").value = z;
-}
-function div() {
-    const x = parseFloat(document.getElementById("x").value);
-    const y = parseFloat(document.getElementById("y").value);
-    const z = x / y;
-    document.getElementById("z").value = z;
-}
-function cl() {
-    document.getElementById("x").value = 0;
-    document.getElementById("y").value = 0;
-    document.getElementById("z").value = 0;
-}
-function rem() {
-    const x = parseFloat(document.getElementById("x").value);
-    const y = parseFloat(document.getElementById("y").value);
-    const z = x % y;
-    document.getElementById("z").value = z;
-}
-function quo() {
-    const x = parseFloat(document.getElementById("x").value);
-    const y = parseFloat(document.getElementById("y").value);
-    const z = Math.floor(x/y);
-    document.getElementById("z").value = z;
-}
-function squ() {
-    const x = parseFloat(document.getElementById("x").value);
-    const z = Math.sqrt(x);
-    document.getElementById("z").value = z;
+function displayCalendar() {
+    const monthSelect = document.getElementById("monthSelect");
+    const monthIndex = monthSelect.selectedIndex;
+    const monthValue = monthSelect.options[monthIndex].value;
+
+
+
+    const date = new Date();
+    date.setMonth(monthValue);
+    date.setDate(1);
+
+
+    let calendarHTML = "<table>";
+    calendarHTML +="<tr><th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th></tr>"
+
+    while (date.getMonth() == monthValue) {
+        calendarHTML +="<tr>";
+        for (let i =0; i < 7;i++){
+            if (date.getDay() == i){
+                calendarHTML += "<td>" + date.getDate() + "</td>";
+                date.setDate(date.getDate() + 1);
+            } else {
+                calenderHTML += "<td></td>"
+            }
+        }
+        calendarHTML += "</tr>";
+    }
+
+    calendarHTML += "</table>";
+
+    console.log(calendarHTML);
+
+    document.getElementById("calendar").innerHTML = calendarHTML;
 }
