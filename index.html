@@ -4,40 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>カレンダーアプリ</title>
+    <title>天気アプリ</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <h1>iTeen Calendar</h1>
-    </header>
-    <main>
-        <p>表示したい月を選択してください</p>
-        <select id="monthSelect">
-        <option value="0">1月</option>
-        <option value="1">2月</option>
-        <option value="2">3月</option>
-        <option value="3">4月</option>
-        <option value="4">5月</option>
-        <option value="5">6月</option>
-        <option value="6">7月</option>
-        <option value="7">8月</option>
-        <option value="8">9月</option>
-        <option value="9">10月</option>
-        <option value="10">11月</option>
-        <option value="11">12月</option>
+    <h1>天気アプリ</h1>
+    <div class="main">
+        <select id="select">
+            <option value="Fukuoka">福岡</option>
+            <option value="Kasuga">春日</option>
+            <option value="Tokyo">東京</option>
+            <option value="Osaka">大阪</option>
+            <option value="Nagoya">名古屋</option>
+            <option value="Kurume">久留米</option>
+            <option value="Saga">佐賀</option>
         </select>
-        <button onclick="displayCalendar()">表示</button>
 
-        <div id="calendar">
-
-
-        </div>
-        
-
-    </main>
-
-
+        <div id="box"></div>
+    </div>
     <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,32 +1,38 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
 h1{
-    font-size: 15px;
-    background-color: black;
-    width: 280px;
-    height: 40px;
+    font-size: 20px;
+    background-color: aliceblue;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
     margin: 10px auto;
-    text-align: center;
-    line-height: 40px;
-    border: 1px solid white;
     border-radius: 10px;
-    color: white;
+    border: 1px solid red;
+    border-radius: 10px;
 }
-
-main{
+.main{
+    background-color: aliceblue;
+    width: 200px;
+    height: auto;
     text-align: center;
-    background-color: black;
-    width: 280px;
     margin: 0 auto;
-    border: 1px solid white;
+    border: 1px solid red;
     border-radius: 10px;
-    color: white;
 }
 
-button{
-    background-color: black;
-    color: white;
+#box h3{
+    color: red;
+    font-size: 18px;
 }
 
-#calendar{
-    margin: 30px auto;
-    width: 62%;
+#box p{
+    font-weight: bold;
+    font-size: 14px;
+    text-align: left;
+    padding: 0 0 0 8px;
 }
