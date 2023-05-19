@@ -1,23 +1,23 @@
 "use strict"
 
-function A(){
+function S() {
+    let li = document.createElement("li");
+    let inp = document.getElementById("inp").value;
+    li.textContent = inp;
 
-    const li = document.createElement("li");
-    li.textContent = document.getElementById("in").value;
+    let out = document.getElementById("out");
+    out.appendChild(li);
 
-    const ul = document.getElementById("out");
-    ul.appendChild(li);
-
-    document.getElementById("in").value = "";
+    document.getElementById("inp").value = "";
 }
 
-function C() {
+function C(){
     const ul = document.getElementById("out");
     while (ul.firstChild != null) {
         ul.removeChild(ul.firstChild);
     }
 }
 
-function P() {
-    window.print();
+function P(){
+    window.print()
 }
