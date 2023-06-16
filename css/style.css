@@ -1,29 +1,30 @@
 *{
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
+
 h1{
-    font-size: 20px;
-    text-align: center
-}
-#inDiv{
+    font-size:30px;
+    background-color:aqua;
+    width: 500px;
+    height: 50px;
     text-align: center;
+    line-height: 50px;
+    margin: 10px auto;
+    border: 1px solid lightblue;
+    border-radius: 10px;
 }
-#inp{
-    width: 400px;
-    height: 150px;
-}
-#outDiv{
+
+.main{
     text-align: center;
 }
 
-#out {
-    width: 400px;
-    text-align: left;
-    display: block;
-    margin: auto;
+ol{
+    text-align: center;
+    margin: 0px auto;
+    width: 30%;
 }
 
 li{
-    list-style: decimal;
+    text-align: left;
 }
