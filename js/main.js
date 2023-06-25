@@ -1,41 +1,35 @@
 "use strict"
 
-let words = [];
-function A(){
-    const in1 = document.getElementById("in1")
-    const in2 = document.getElementById("in2")
-    const trim1 = in1.value.trim();
-    const trim2 = in2.value.trim();
 
-    if (!trim1 || !trim2){
-        alert("単語の意味を入力してください");
-        return;
-    }
-    words.push({trim1,trim2});
-    D();
-    in1.value = "";
-    in2.value = "";
-}
+const volumeSlider = document.getElementById("slider");
 
-function D() {
-    const out = document.getElementById("out");
-    out.innerHTML = "";
-    words.forEach(x =>{
-        const li = document.createElement("li");
-        li.textContent = `${x.trim1}: ${x.trim2}`;
-        out.appendChild(li);
-    });
-}
 
-function C(){
-    const ul = document.getElementById("out");
-    while(ul.firstChild != null) {
-        ul.removeChild(ul.firstChild);
-    }
-    words = [];
+const volumeValue = document.getElementById("vol");
+
+
+const audio = document.getElementById("player");
+
+
+function volume() {
+    const value = volumeSlider.value;
+    volumeValue.textContent = value + "%";
+
+
+    audio.volume = value / 100;
 }
 
 
-function P(){
-    window.print()
+function play() {
+    audio.play();
+}
+
+
+function pause() {
+    audio.pause();
+}
+
+
+function stop() {
+    audio.pause();
+    audio.currentTime = 0;
 }
