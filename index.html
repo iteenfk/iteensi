@@ -1,63 +1,111 @@
 <html>
-<head>
-<title>9-15</title>
+<hrad>
+<title>9/22</title>
 <style>
-h1{
-font-size:20px;
-text-align:center;
+.box_c{
+width:600px;
+height:300px;
+background-color:white;
+border:1px solid black;
+border-radius:10px;
+margin:auto;
+overflow:hidden;
 }
-.x{
+
+.text_c{
 text-align:center;
+margin:300px 0;
+}
+.btn_c{
+text-align:center;
+margin-top:20px;
 }
 </style>
 </head>
 <body>
-<h1>日時表示アプリ</h1>
-<div class ="x">
-<p id="out">表示</p>
-<button onclick="Start()">開始</button>
-<button onclick="Stop()">停止</button>
+<div class="btn_c">
+<div class="box_c" id="box_id">
+<p class="text_c">
+
+　　　　　　　 　 ／　　　　　　　　　　　　 　／<br>
+　　　　　　　,イ　　　　　　　　　　　　 　　/<br>
+　　　　　 ／/　　 　 　 　 　 　 　　 　 　 |<br>
+　　　　　　/　　　　　　　　　,ｨ介i　 　 　 | 　 う　 ぶ　 き<br>
+　　　　　　{. |l　　　　　,ｲ　 ///|｜ 　 　 | 　 ち 　 っ　え<br>
+　　　　 ,-.､Vl　 　 　 / |　///　| |　　　 ｣　　に　 と　 ろ<br>
+　 　 　 lこ!l　! ﾄ　　　ト.l　| !i　　| ヽﾄ､＜　　 な　 ば<br>
+　 　 　 |　 l　Vヽ　　ﾄjヽ＼!l　　　,＞‐_ニヽ　　 　 さ<br>
+　　　　 |　 |　　　＼　! く__・､jiLノ・_´フ　.|｜　　　れ<br>
+　　　　 |　｜　__ 　 ヽ｝　-‐　　　-─‐ 　ﾚﾍ.　　　ん<br>
+　　 _r‐j 　 >イ fヽ　　l　　　ﾉ　__　　　 ,ｲ-ﾊ<br>
+　 / ′､ 　 i 　 {ノ-､　ヽ　　｀t_／　　／| /´ヽ<br>
+　〈　ヽ 　 　l 　 |　　}　　 ＼　　　　-' j　 |　　 ＼<br>
+　 ヽ　 　　　 　 　 /　 　　 |　￣　　　　　L<br>
+　　ヽ　 　　　　　/ -─ フ′　 　　 　　 　 ｀ヽ─- ､<br>
+　　　ヽ　　　　　ヽ　　／｀ｰ-､　　　,. -─ '/　　　　ー- ､<br>
+　　　 f‐--── 'ヽ　{　　　　　~　　　　／　 ／, -──‐-＼<br>
+　　／| 　　 　　 　 |　ヽ　 　　 　 　 ／　/／／　　　　　　　 ヽ<br>
+
+
+</p>
 </div>
+<button onclick="start()">開始</button>
+<button onclick="stop()">停止</button>
 <script>
-z = null;
-function Start(){
-z = setInterval(B,1000);
+const box = document.getElementById("box_id");
+let scroll = 0;
+let t = null;
+
+function start(){
+clearInterval(t)
+t = setInterval(auto,10);
 }
-function Stop(){
-clearInterval(z);
+
+function stop(){
+clearInterval(t);
 }
-function B(){
-const now = new Date();
-const year = now.getFullYear();
-const month = now.getMonth()+1;
-const date = now.getDate();
-let day = now.getDay();
-const hours = now.getHours();
-const minutes = now.getMinutes();
-const seconds = now.getSeconds();
-if (day == 1){
-day ="月";
+function auto(){
+box.scrollTop = scroll;
+if (box.scrollTop < box.scrollHeight - box.clientHeight){
+   scroll = scroll +1;
+}else{
+scroll = 0;
+box.scrollTop =0;
+
 }
-if (day == 2){
-day ="火";
-}
-if (day == 3){
-day ="水";
-}
-if (day == 4){
-day ="木";
-}
-if (day == 5){
-day ="金";
-}
-if (day == 6){
-day ="土";
-}
-if (day == 0){
-day ="日";
-}
-document.getElementById("out").textContent =`${year}年${month}月${date}日(${day})${hours}時${minutes}分${seconds}秒`;
 }
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
