@@ -1,111 +1,63 @@
 <html>
-<hrad>
-<title>9/22</title>
+<head>
+<title>10/13</title>
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 <style>
-.box_c{
-width:600px;
-height:300px;
-background-color:white;
-border:1px solid black;
-border-radius:10px;
+*{
+padding:0;
+margin:0;
+}
+.dsp{
+border:2px solid red;
+text-align:center;
+width:400px;
 margin:auto;
-overflow:hidden;
+}
+#size_id,#fore_id,#back_id{
+width:50px;
 }
 
-.text_c{
+#output_id{
+display:inline-block;
 text-align:center;
-margin:300px 0;
-}
-.btn_c{
-text-align:center;
-margin-top:20px;
 }
 </style>
 </head>
 <body>
-<div class="btn_c">
-<div class="box_c" id="box_id">
-<p class="text_c">
+<div class="dsp">
+<h1>QRCode作成</h1>
+url:<input type="text" id="url_id" value="https://google.co.jp"><br>
+サイズ<input type="number" id="size_id"><br>
+前景色:<input type="text" id="fore_id"><br>
+背景色:<input type="text" id="back_id"><br>
+<div id="output_id"></div><br><br>
+<button onclick="btn()">作成</button>
+</duv>
 
-　　　　　　　 　 ／　　　　　　　　　　　　 　／<br>
-　　　　　　　,イ　　　　　　　　　　　　 　　/<br>
-　　　　　 ／/　　 　 　 　 　 　 　　 　 　 |<br>
-　　　　　　/　　　　　　　　　,ｨ介i　 　 　 | 　 う　 ぶ　 き<br>
-　　　　　　{. |l　　　　　,ｲ　 ///|｜ 　 　 | 　 ち 　 っ　え<br>
-　　　　 ,-.､Vl　 　 　 / |　///　| |　　　 ｣　　に　 と　 ろ<br>
-　 　 　 lこ!l　! ﾄ　　　ト.l　| !i　　| ヽﾄ､＜　　 な　 ば<br>
-　 　 　 |　 l　Vヽ　　ﾄjヽ＼!l　　　,＞‐_ニヽ　　 　 さ<br>
-　　　　 |　 |　　　＼　! く__・､jiLノ・_´フ　.|｜　　　れ<br>
-　　　　 |　｜　__ 　 ヽ｝　-‐　　　-─‐ 　ﾚﾍ.　　　ん<br>
-　　 _r‐j 　 >イ fヽ　　l　　　ﾉ　__　　　 ,ｲ-ﾊ<br>
-　 / ′､ 　 i 　 {ノ-､　ヽ　　｀t_／　　／| /´ヽ<br>
-　〈　ヽ 　 　l 　 |　　}　　 ＼　　　　-' j　 |　　 ＼<br>
-　 ヽ　 　　　 　 　 /　 　　 |　￣　　　　　L<br>
-　　ヽ　 　　　　　/ -─ フ′　 　　 　　 　 ｀ヽ─- ､<br>
-　　　ヽ　　　　　ヽ　　／｀ｰ-､　　　,. -─ '/　　　　ー- ､<br>
-　　　 f‐--── 'ヽ　{　　　　　~　　　　／　 ／, -──‐-＼<br>
-　　／| 　　 　　 　 |　ヽ　 　　 　 　 ／　/／／　　　　　　　 ヽ<br>
-
-
-</p>
-</div>
-<button onclick="start()">開始</button>
-<button onclick="stop()">停止</button>
 <script>
-const box = document.getElementById("box_id");
-let scroll = 0;
-let t = null;
 
-function start(){
-clearInterval(t)
-t = setInterval(auto,10);
-}
+function btn(){
+const output = document.getElementById("output_id");
 
-function stop(){
-clearInterval(t);
-}
-function auto(){
-box.scrollTop = scroll;
-if (box.scrollTop < box.scrollHeight - box.clientHeight){
-   scroll = scroll +1;
-}else{
-scroll = 0;
-box.scrollTop =0;
+const url = document.getElementById("url_id").value;
+const size = document.getElementById("size_id").value;
+const fore = document.getElementById("fore_id").value;
+const back = document.getElementById("back_id").value;
 
-}
+const opt = {text:url,
+             width:size,
+             height:size,
+             colorDark:fore,
+             colorLight:back,}
+const QRC = new QRCode(output,opt);
+
+document.getElementById("url_id").value = "";
+document.getElementById("size_id").value = "";
+document.getElementById("fore_id").value = "";
+document.getElementById("back_id").value = "";
+
 }
 </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
