@@ -1,69 +1,117 @@
-<!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>10/20</title>
-    <style>
-        th,td{
-            border: 1px solid black;
-        }
-        table{
-            border-collapse: collapse;
-        }
-    </style>
+<title>10/13</title>
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<style>
+*{
+padding:0;
+margin:0;
+}
+.dsp{
+border:2px solid red;
+text-align:center;
+width:400px;
+margin:auto;
+}
+#size_id,#fore_id,#back_id{
+width:80px;
+}
+
+#output_id{
+display:inline-block;
+text-align:center;
+}
+</style>
 </head>
 <body>
-    <ul id="ul_id">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-    </ul>
-    データ1,<input type="text" id="in1_id">
-    データ2,<input type="text" id="in2_id">
-    データ3,<input type="text" id="in3_id">
-    <table id="table_id">
-        <tr>
-            <th>データ1</th>
-            <th>データ2</th>
-            <th>データ3</th>
-        </tr>
-        <tr>
-            <td>data1</td>
-            <td>data2</td>
-            <td>data3</td>
-        </tr>
-    </table>
-    <button onclick="B()">table</button>
-    <script>
-        const ul = document.getElementById("ul_id");
-        const li = document.createElement("li");
-        li.textContent = "4";
-        ul.appendChild(li);
+<div class="dsp">
+<h1>QRCode作成</h1>
+URL:
+<select id="url_id">
+ <option value="https://google.co.jp">Google</option>
+ <option value="https://yahoo.co.jp">Yahoo</option>
+ <option value="https://rakuten.co.jp">楽天</option>
+</select>
+<br>
 
+サイズ:
+<select id="size_id">
+ <option value=100>100x100</option>
+ <option value=200>200x200</option>
+ <option value=300>300x300</option>
+</select>
+<br>
+前景色:
+赤<input type="radio" name="color" value="red">
+黒<input type="radio" name="color" value="black">
+青<input type="radio" name="color" value="blue">
+<br>
+背景色:
+桃<input type="radio" name="color2" value="pink">
+白<input type="radio" name="color2" value="white">
+橙<input type="radio" name="color2" value="orange">
+<br>
+<div id="output_id"></div><br><br>
+<button onclick="btn()">作成</button>
+<button onclick ="btn2()">クリア</button>
+</duv>
 
-        function B(){
-            const in1 = document.getElementById("in1_id").value;
-            const in2 = document.getElementById("in2_id").value;
-            const in3 = document.getElementById("in3_id").value;
-            if (in1 !="" && in2 !="" && in3 !=""){
-                const table = document.getElementById("table_id");
-                const tr = document.createElement("tr"); 
-                const td1 = document.createElement("td");
-                td1.textContent = in1
-                tr.appendChild(td1);
-                const td2 = document.createElement("td");
-                td2.textContent = in2
-                tr.appendChild(td2);
-                const td3 = document.createElement("td");
-                td3.textContent = in3
-                tr.appendChild(td3);
-                table.appendChild(tr);
-    
-                document.getElementById("in1_id").value = "";
-                document.getElementById("in2_id").value = "";
-                document.getElementById("in3_id").value = "";
-            }
-        }
-    </script>
+<script>
+
+function btn(){
+const output = document.getElementById("output_id");
+
+const url = document.getElementById("url_id").value;
+const size = document.getElementById("size_id").value;
+const colors = document.getElementsByName("color");
+let fore = "";
+if (colors[0].checked == true){
+fore = colors[0].value;
+}
+
+if (colors[1].checked == true){
+
+fore = colors[1].value;
+}
+
+if (colors[2].checked == true){
+
+fore = colors[2].value;
+}
+
+const colors2 = document.getElementsByName("color2");
+let back = "";
+if (colors2[0].checked == true){
+back = colors2[0].value;
+}
+
+if (colors2[1].checked == true){
+
+back = colors2[1].value;
+}
+
+if (colors2[2].checked == true){
+
+back = colors2[2].value;
+}
+
+const opt = {text:url,
+             width:size,
+             height:size,
+             colorDark:fore,
+             colorLight:back,}
+const QRC = new QRCode(output,opt);
+
+document.getElementById("url_id").value = "";
+document.getElementById("size_id").value = "";
+document.getElementById("fore_id").value = "";
+document.getElementById("back_id").value = "";
+
+}
+function btn2(){
+location.reload();
+}
+</script>
+
 </body>
+</html>
