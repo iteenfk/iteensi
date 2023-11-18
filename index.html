@@ -1,117 +1,65 @@
 <html>
 <head>
-<title>10/13</title>
-<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-<style>
-*{
-padding:0;
-margin:0;
-}
-.dsp{
-border:2px solid red;
-text-align:center;
-width:400px;
-margin:auto;
-}
-#size_id,#fore_id,#back_id{
-width:80px;
-}
-
-#output_id{
-display:inline-block;
-text-align:center;
-}
-</style>
+  <title>ラジオボタンアプリ</title>
+  <style>
+    body {
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
-<div class="dsp">
-<h1>QRCode作成</h1>
-URL:
-<select id="url_id">
- <option value="https://google.co.jp">Google</option>
- <option value="https://yahoo.co.jp">Yahoo</option>
- <option value="https://rakuten.co.jp">楽天</option>
-</select>
-<br>
 
-サイズ:
-<select id="size_id">
- <option value=100>100x100</option>
- <option value=200>200x200</option>
- <option value=300>300x300</option>
-</select>
-<br>
-前景色:
-赤<input type="radio" name="color" value="red">
-黒<input type="radio" name="color" value="black">
-青<input type="radio" name="color" value="blue">
-<br>
-背景色:
-桃<input type="radio" name="color2" value="pink">
-白<input type="radio" name="color2" value="white">
-橙<input type="radio" name="color2" value="orange">
-<br>
-<div id="output_id"></div><br><br>
-<button onclick="btn()">作成</button>
-<button onclick ="btn2()">クリア</button>
-</duv>
+  <h1>好きな言語を選んでください</h1>
 
-<script>
+  <input type="radio" name="language" value="JavaScript">JavaScript
 
-function btn(){
-const output = document.getElementById("output_id");
+  <input type="radio" name="language" value="Python">Python
 
-const url = document.getElementById("url_id").value;
-const size = document.getElementById("size_id").value;
-const colors = document.getElementsByName("color");
-let fore = "";
-if (colors[0].checked == true){
-fore = colors[0].value;
+  <input type="radio" name="language" value="Scratch">Scratch
+  
+  <br><button onclick="btn()">クリック</button>
+
+  <div id="output_id"></div>
+  <div id="img_id"></div>
+
+  <script>
+    
+    function btn(){
+       const output = document.getElementById("output_id");
+       const languages = document.getElementsByName("language");
+       const img = document.getElementById("img_id");
+
+       for (let i = 0; i <= 2; i++){
+       if (languages[i].checked == true){
+            const language = languages[i].value;
+            // output.textContent = `好きな言語は${language}です。`;
+            output.textContent = "好きな言語は"+language+"です。";
+            
+            addImage(language, img)
+           }
+         
+        }
+      }
+
+     function addImage(language, img){
+        let src = "";
+        if (language == "JavaScript"){
+           src = "javascript.png";
+        } 
+        if (language == "Python"){
+           src = "python.png";
+        }
+        if (language == "Scratch"){
+           src = "scratch.jpg";
+        }
+
+        const image = document.createElement("img");
+        image.src = src;
+        image.width = 300;
+        img.innerHTML = "";
+        img.appendChild(image);
 }
-
-if (colors[1].checked == true){
-
-fore = colors[1].value;
-}
-
-if (colors[2].checked == true){
-
-fore = colors[2].value;
-}
-
-const colors2 = document.getElementsByName("color2");
-let back = "";
-if (colors2[0].checked == true){
-back = colors2[0].value;
-}
-
-if (colors2[1].checked == true){
-
-back = colors2[1].value;
-}
-
-if (colors2[2].checked == true){
-
-back = colors2[2].value;
-}
-
-const opt = {text:url,
-             width:size,
-             height:size,
-             colorDark:fore,
-             colorLight:back,}
-const QRC = new QRCode(output,opt);
-
-document.getElementById("url_id").value = "";
-document.getElementById("size_id").value = "";
-document.getElementById("fore_id").value = "";
-document.getElementById("back_id").value = "";
-
-}
-function btn2(){
-location.reload();
-}
-</script>
-
+  </script>
 </body>
 </html>
