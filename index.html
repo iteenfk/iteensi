@@ -1,65 +1,36 @@
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-  <title>ラジオボタンアプリ</title>
-  <style>
-    body {
-      text-align: center;
-      padding: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-24</title>
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+    <h1>チェックボックス</h1>
+    A:900円 <input type="checkbox" name="price" value="900" onchange="change()">
+    A:1,000円 <input type="checkbox" name="price" value="1000" onchange="change()">
+    A:1,500円 <input type="checkbox" name="price" value="1500" onchange="change()">
+    <br>合計：<span id="output_id">￥0</span>
 
-  <h1>好きな言語を選んでください</h1>
+    <script>
+        function change(){
+            const output = document.getElementById("output_id");
+            const prices = document.getElementsByName("price");
+            console.log(prices);
+            let total = 0;
+            for (let i =0; i < 3; i++){
+                if (prices[i].checked == true){
+                    total += parseInt(prices[i].value);
+                }
+            }
 
-  <input type="radio" name="language" value="JavaScript">JavaScript
-
-  <input type="radio" name="language" value="Python">Python
-
-  <input type="radio" name="language" value="Scratch">Scratch
-  
-  <br><button onclick="btn()">クリック</button>
-
-  <div id="output_id"></div>
-  <div id="img_id"></div>
-
-  <script>
-    
-    function btn(){
-       const output = document.getElementById("output_id");
-       const languages = document.getElementsByName("language");
-       const img = document.getElementById("img_id");
-
-       for (let i = 0; i <= 2; i++){
-       if (languages[i].checked == true){
-            const language = languages[i].value;
-            // output.textContent = `好きな言語は${language}です。`;
-            output.textContent = "好きな言語は"+language+"です。";
-            
-            addImage(language, img)
-           }
-         
+            output.textContent = "￥"+total.toLocaleString();
         }
-      }
-
-     function addImage(language, img){
-        let src = "";
-        if (language == "JavaScript"){
-           src = "javascript.png";
-        } 
-        if (language == "Python"){
-           src = "python.png";
-        }
-        if (language == "Scratch"){
-           src = "scratch.jpg";
-        }
-
-        const image = document.createElement("img");
-        image.src = src;
-        image.width = 300;
-        img.innerHTML = "";
-        img.appendChild(image);
-}
-  </script>
+    </script>
 </body>
 </html>
