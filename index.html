@@ -3,34 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>11-24</title>
+    <title>12-8クイズアプリ</title>
     <style>
         body{
             text-align: center;
         }
+        #option_id{
+            display: flex;
+            justify-content: center;
+        }
+        .option_c{
+            margin: 0 10px;
+            padding: 5px 10px;
+        }
     </style>
 </head>
 <body>
-    <h1>チェックボックス</h1>
-    A:900円 <input type="checkbox" name="price" value="900" onchange="change()">
-    A:1,000円 <input type="checkbox" name="price" value="1000" onchange="change()">
-    A:1,500円 <input type="checkbox" name="price" value="1500" onchange="change()">
-    <br>合計：<span id="output_id">￥0</span>
+    <h1>クイズアプリ</h1>
+    <div id="question_id"></div>
+    <div id="option_id"></div>
+    <button onclick="next()">次の問題</button>
+    <div id="score_id"></div>
 
     <script>
-        function change(){
-            const output = document.getElementById("output_id");
-            const prices = document.getElementsByName("price");
-            console.log(prices);
-            let total = 0;
-            for (let i =0; i < 3; i++){
-                if (prices[i].checked == true){
-                    total += parseInt(prices[i].value);
-                }
-            }
+        "use strict";
+        const questions = [
+            {
+                question:"フランスの首都は？",
+                options:["ベルリン","マドリード","パリ","ローマ"],
+                answer:"パリ"
+            },
+            {
+                question:"赤い惑星とは？",
+                options:["火星","木星","地球","土星"],
+                answer:"火星"
+            },
+            {
+                question:"最大の哺乳類は？",
+                options:["ゾウ","シロナガスクジラ","サイ","カバ"],
+                answer:"シロナガスクジラ"
+            },
+        ];
 
-            output.textContent = "￥"+total.toLocaleString();
+        let i = 0;
+        let score = 0;
+
+        function dsp(){
+            const question_out = document.getElementById("question_id");
+            question_out.textContent = questions[i].question;
+
+            const option_out = document.getElementById("option_id");
+            option_out.textContent = "";
+
+            for (let j = 0; j < questions[i].options.length; j++){
+                const div = document.createElement("div");
+                div.textContent = questions[i].options[j];
+                div.classList.add("option_c");
+                div.onclick = function click(){
+                    const option = questions[i].options[j];
+                    check(option);
+                }
+                option_out.appendChild(div);
+            }
         }
+
+        function check(option){
+            if (option == questions[i].answer){
+                score++;
+            }
+            const score_out = document.getElementById("score_id");
+            score_out.textContent = `Score:${score}`;
+        }
+        function next(){
+            i++
+            const score_out = document.getElementById("score_id");
+            score_out.textContent = "";
+            if (i < questions.length){
+                dsp()
+            }else{
+                const score_out = document.getElementById("score_id");
+                score_out.textContent = "クイズ終了";
+                const option_out = document.getElementById("option_id");
+                option_out.textContent = "";
+            }
+        }
+        dsp();
     </script>
 </body>
 </html>
